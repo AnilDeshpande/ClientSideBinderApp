@@ -103,9 +103,11 @@ public class ClientSideMainActivity extends AppCompatActivity implements View.On
     }
 
     private void unbindFromRemoteSevice(){
-        unbindService(randomNumberServiceConnection);
-        mIsBound=false;
-        Toast.makeText(mContext,"Service Unbound",Toast.LENGTH_SHORT).show();
+        if(mIsBound){
+           unbindService(randomNumberServiceConnection);
+           mIsBound=false;
+           Toast.makeText(mContext,"Service Unbound",Toast.LENGTH_SHORT).show();
+       }
     }
 
     private void fetchRandomNumber(){
